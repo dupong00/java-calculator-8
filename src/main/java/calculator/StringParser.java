@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class StringParser {
     String temp_string;
     List<Integer> result_list;
+
     public StringParser(String str){
         this.temp_string = str;
         this.result_list = new ArrayList<Integer>();
