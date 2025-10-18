@@ -59,7 +59,7 @@ public class StringParserTest {
     @DisplayName("숫자 문자열 앞뒤에 공백이 있어도 trim으로 처리한다.")
     void parseWithWhitespace() {
         // given
-        String input = " 1 , 2 : 3 "; // parser() 내부의 trim() 테스트
+        String input = "// \n1, 2 : 3 "; // parser() 내부의 trim() 테스트
 
         // when
         StringParser parser = new StringParser(input);

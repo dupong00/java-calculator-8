@@ -10,10 +10,15 @@ public class Application {
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
 
-        StringParser sp = new StringParser(str);
-        List<Integer> a = sp.getNumbers();
+        try{
+            StringParser sp = new StringParser(str);
+            List<Integer> a = sp.getNumbers();
 
-        AddCalculator ac = new AddCalculator(a);
-        System.out.println("결과 : " + ac.getSum());
+            AddCalculator ac = new AddCalculator(a);
+            System.out.println("결과 : " + ac.getSum());
+        } catch (IllegalArgumentException e) {
+            System.out.println("[에러]" + e.getMessage());
+        }
+
     }
 }

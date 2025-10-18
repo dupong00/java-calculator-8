@@ -39,9 +39,22 @@ public class StringParser {
     private void parseNumbers(String text, String regex) {
         String[] stringNumbers = text.split(regex);
         for (String s : stringNumbers) {
-            if (!s.isEmpty()) {
-                result_list.add(Integer.parseInt(s.trim()));
+            if (s.isEmpty()) {
+                continue;
             }
+
+            int number;
+            try {
+                number = Integer.parseInt(s);
+            }catch (NumberFormatException e){
+                throw new IllegalArgumentException("입력한 문자열에 숫자가 아닌 값이 포함되어 있습니다.");
+            }
+            if (number < 0){
+                throw new IllegalArgumentException("음수는 입력할 수 없습니다.");
+            }
+
+            this.result_list.add(number);
         }
+
     }
 }
