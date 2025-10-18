@@ -10,7 +10,6 @@ public class StringParser {
     List<Integer> result_list;
 
     public StringParser(String str){
-        str = str.replace("\\n", "\n");
         this.temp_string = str;
         this.result_list = new ArrayList<Integer>();
         parser();
@@ -22,7 +21,7 @@ public class StringParser {
 
     private void parser(){
         String stringToParse = this.temp_string;
-        Matcher m = Pattern.compile("//(.+)\n(.*)")
+        Matcher m = Pattern.compile("//(.+)\\\\n(.*)")
                 .matcher(stringToParse);
         String regex = Pattern.quote(",") + "|" + Pattern.quote(":");
 
