@@ -22,3 +22,4 @@
 
 - 숫자로 변환할 수 없는 값이 있는 경우 IllegalArgumentException을 발생시킨 후 종료됩니다.
 - 커스텀 문자 형식에 맞추지 않은 경우 IllegalArgumentException을 발생시킨 후 종료됩니다.
+- 음수를 입력할 경우 IlleagalArgumentException을 발생시킨 후 종료됩니다.
