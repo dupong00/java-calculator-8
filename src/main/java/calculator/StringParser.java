@@ -10,6 +10,7 @@ public class StringParser {
     List<Integer> result_list;
 
     public StringParser(String str){
+        str = str.replace("\\n", "\n");
         this.temp_string = str;
         this.result_list = new ArrayList<Integer>();
         parser();
@@ -20,28 +21,26 @@ public class StringParser {
     }
 
     private void parser(){
+        String stringToParse = this.temp_string;
         Matcher m = Pattern.compile("//(.+)\n(.*)")
-                .matcher(this.temp_string);
+                .matcher(stringToParse);
+        String regex = Pattern.quote(",") + "|" + Pattern.quote(":");
 
         if (m.find()){
             String customDelimiter = m.group(1);
-            String str = m.group(2);
+            stringToParse = m.group(2);
 
-            String regex = Pattern.quote(",") + "|" + Pattern.quote(":") + "|" + Pattern.quote(customDelimiter);
-            String[] stringNumbers = str.split(regex);
+            regex += "|" + Pattern.quote(customDelimiter);
+        }
 
-            for (String s : stringNumbers){
-                if (!s.isEmpty()){
-                    result_list.add(Integer.parseInt(s.trim()));
-                }
-            }
-        } else {
-            String regex = Pattern.quote(",") + "|" + Pattern.quote(":");
-            String[] stringNumbers = this.temp_string.split(regex);
-            for (String s : stringNumbers){
-                if (!s.isEmpty()){
-                    result_list.add(Integer.parseInt(s.trim()));
-                }
+        parseNumbers(stringToParse, regex);
+    }
+
+    private void parseNumbers(String text, String regex) {
+        String[] stringNumbers = text.split(regex);
+        for (String s : stringNumbers) {
+            if (!s.isEmpty()) {
+                result_list.add(Integer.parseInt(s.trim()));
             }
         }
     }
