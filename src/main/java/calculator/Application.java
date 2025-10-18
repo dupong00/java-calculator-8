@@ -17,7 +17,7 @@ public class Application {
             AddCalculator ac = new AddCalculator(a);
             System.out.println("결과 : " + ac.getSum());
         } catch (IllegalArgumentException e) {
-            System.out.println("[에러]" + e.getMessage());
+            throw new IllegalArgumentException();
         }
 
     }
