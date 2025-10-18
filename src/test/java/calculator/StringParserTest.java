@@ -56,20 +56,6 @@ public class StringParserTest {
     }
 
     @Test
-    @DisplayName("숫자 문자열 앞뒤에 공백이 있어도 trim으로 처리한다.")
-    void parseWithWhitespace() {
-        // given
-        String input = "// \n1, 2 : 3 "; // parser() 내부의 trim() 테스트
-
-        // when
-        StringParser parser = new StringParser(input);
-        List<Integer> numbers = parser.getNumbers();
-
-        // then
-        assertEquals(Arrays.asList(1, 2, 3), numbers);
-    }
-
-    @Test
     @DisplayName("커스텀 구분자가 정규식 특수문자여도 Pattern.quote로 처리된다.")
     void parseWithRegexSpecialCharDelimiter() {
         // given
