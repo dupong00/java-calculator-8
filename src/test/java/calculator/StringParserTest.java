@@ -31,7 +31,7 @@ public class StringParserTest {
     @DisplayName("커스텀 구분자를 지정하여 숫자를 분리한다.")
     void parseWithCustomDelimiter() {
         // given
-        String input = "//;\n1;2;3";
+        String input = "//;\\n1;2;3";
 
         // when
         StringParser parser = new StringParser(input);
@@ -59,7 +59,7 @@ public class StringParserTest {
     @DisplayName("커스텀 구분자가 정규식 특수문자여도 Pattern.quote로 처리된다.")
     void parseWithRegexSpecialCharDelimiter() {
         // given
-        String input = "//* \n1* 2* 3"; // Pattern.quote(customDelimiter) 테스트
+        String input = "//* \\n1* 2* 3"; // Pattern.quote(customDelimiter) 테스트
 
         // when
         StringParser parser = new StringParser(input);
